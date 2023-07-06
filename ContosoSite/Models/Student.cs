@@ -19,7 +19,9 @@ namespace ContosoSite.Models
         {
             this.Enrollment = new HashSet<Enrollment>();
         }
-    
+    /// <summary>
+    /// 
+    /// </summary>
         public int StudentID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
