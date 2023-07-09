@@ -150,10 +150,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContosoModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContosoModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContosoModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Course.cs">
       <DependentUpon>ContosoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enrollment.cs">
+      <DependentUpon>ContosoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Grade.cs">
       <DependentUpon>ContosoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Metadata.cs" />
@@ -202,7 +210,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\ContosoModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ContosoModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ContosoModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\ContosoModel.edmx.diagram">
       <DependentUpon>ContosoModel.edmx</DependentUpon>

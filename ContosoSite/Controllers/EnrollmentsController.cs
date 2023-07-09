@@ -17,7 +17,7 @@ namespace ContosoSite.Controllers
         // GET: Enrollments
         public ActionResult Index()
         {
-            var enrollment = db.Enrollment.Include(e => e.Course).Include(e => e.Student);
+            var enrollment = db.Enrollment.Include(e => e.Course).Include(e => e.Student).Include(e => e.Grade1);
             return View(enrollment.ToList());
         }
 
@@ -77,6 +77,7 @@ namespace ContosoSite.Controllers
             }
             ViewBag.CourseID = new SelectList(db.Course, "CourseID", "Title", enrollment.CourseID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "LastName", enrollment.StudentID);
+            ViewBag.GradeID = new SelectList(db.Grade, "GradeID", "Descripcion_Grado", enrollment.GradeID);
             return View(enrollment);
         }
 
@@ -85,7 +86,7 @@ namespace ContosoSite.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EnrollmentID,Grade,CourseID,StudentID")] Enrollment enrollment)
+        public ActionResult Edit([Bind(Include = "EnrollmentID,CourseID,StudentID,GradeID")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
             {
@@ -95,6 +96,7 @@ namespace ContosoSite.Controllers
             }
             ViewBag.CourseID = new SelectList(db.Course, "CourseID", "Title", enrollment.CourseID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "LastName", enrollment.StudentID);
+            ViewBag.GradeID = new SelectList(db.Grade, "GradeID", "Descripcion_Grado", enrollment.GradeID);
             return View(enrollment);
         }
 

@@ -12,4 +12,9 @@ namespace ContosoSite.Models
     public partial class Enrollment
     {
     }
+
+    [MetadataType(typeof(GradeMetadata))]
+    public partial class Grade
+    {
+    }
 }

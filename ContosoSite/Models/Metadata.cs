@@ -23,7 +23,13 @@ namespace ContosoSite.Models
 
     public class EnrollmentMetadata
     {
-        [Range(0, 4)]
-        public Nullable<decimal> Grade;
+        //[Range(0, 4)]
+        //public Nullable<decimal> Grade;
+    }
+
+    public class GradeMetadata
+    {
+        [Display(Name = "Grado")]
+        public string Descripcion_Grado;
     }
 }

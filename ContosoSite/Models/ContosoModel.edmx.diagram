@@ -6,10 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="27194636a6a74bfc8f1d970a85d6aef2" Name="Diagram1">
         <EntityTypeShape EntityType="ContosoUniversityDataModel.Course" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ContosoUniversityDataModel.Enrollment" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityDataModel.Enrollment" Width="2" PointX="3.875" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ContosoUniversityDataModel.Student" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="ContosoUniversityDataModel.FK_dbo_Enrollment_dbo_Course_CourseID" ManuallyRouted="false" />
         <AssociationConnector Association="ContosoUniversityDataModel.FK_dbo_Enrollment_dbo_Student_StudentID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ContosoUniversityDataModel.Grade" Width="1.5" PointX="6.75" PointY="3.625" />
+        <AssociationConnector Association="ContosoUniversityDataModel.FK_Enrollment_Grade_GradeID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

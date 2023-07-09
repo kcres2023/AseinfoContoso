@@ -22,9 +22,20 @@ CREATE TABLE [dbo].[Course] (
 )
 Go
 
+CREATE TABLE [dbo].[Grade] (
+    GradeID INT           IDENTITY (1, 1) NOT NULL,
+    Grado    DECIMAL(3, 2) NULL,
+    Descripcion   NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED (GradeID ASC)
+)
+Go
+
+Drop table [dbo].[Enrollment]
+go
+
 CREATE TABLE [dbo].[Enrollment] (
     [EnrollmentID] INT IDENTITY (1, 1) NOT NULL,
-    [Grade]        DECIMAL(3, 2) NULL,
+    [GradeID]        INT,
     [CourseID]     INT NOT NULL,
     [StudentID]    INT NOT NULL,
     PRIMARY KEY CLUSTERED ([EnrollmentID] ASC),
@@ -34,6 +45,12 @@ CREATE TABLE [dbo].[Enrollment] (
         REFERENCES [dbo].[Student] ([StudentID]) ON DELETE CASCADE
 )
 Go
+
+
+--Alter Table [dbo].[Enrollment]
+--add constraint FK_Enrollment_Grade_GradeID
+--  foreign key (GradeID)
+--  references [dbo].[Grade](GradeID);
 
 
 MERGE INTO Course AS Target 
@@ -60,27 +77,40 @@ WHEN NOT MATCHED BY TARGET THEN
 INSERT (LastName, FirstName, EnrollmentDate)
 VALUES (LastName, FirstName, EnrollmentDate);
 
+MERGE INTO Grade AS Target
+USING (VALUES 
+        (1, 2.00, 'Grado 2'), 
+        (2, 3.50, 'Grado 3.5'), 
+		(3, 4.00, 'Grado 4.0'),
+		(4, 1.80, 'Grado 1.8'),
+		(5, 3.20, 'Grado 1.8')
+)
+AS Source (GradeID, Grado, Descripcion)
+ON Target.GradeID = Source.GradeID
+WHEN NOT MATCHED BY TARGET THEN
+INSERT (Grado, Descripcion)
+VALUES (Grado, Descripcion);
+
 MERGE INTO Enrollment AS Target
 USING (VALUES 
-(1, 2.00, 1, 1),
-(2, 3.50, 1, 2),
-(3, 4.00, 2, 3),
-(4, 1.80, 2, 1),
-(5, 3.20, 3, 1),
-(6, 4.00, 3, 2)
+(1, 1, 1, 1),
+(2, 2, 1, 2),
+(3, 3, 2, 3),
+(4, 4, 2, 1),
+(5, 5, 3, 1),
+(6, 3, 3, 2)
 )
-AS Source (EnrollmentID, Grade, CourseID, StudentID)
+AS Source (EnrollmentID, GradeID, CourseID, StudentID)
 ON Target.EnrollmentID = Source.EnrollmentID
 WHEN NOT MATCHED BY TARGET THEN
-INSERT (Grade, CourseID, StudentID)
-VALUES (Grade, CourseID, StudentID);
+INSERT (GradeID, CourseID, StudentID)
+VALUES (GradeID, CourseID, StudentID);
 
 
 Alter Table dbo.Student
 Add MiddleName  NVARCHAR(50) NULL
 
 
-Select * From [dbo].[Enrollment]
-Select * From  [dbo].[Course] 
-Select * from [dbo].[Student]
-
+--Select * From [dbo].[Enrollment]
+--Select * From  [dbo].[Course] 
+--Select * from [dbo].[Student]

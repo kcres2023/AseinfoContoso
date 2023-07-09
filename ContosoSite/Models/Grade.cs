@@ -12,20 +12,24 @@ namespace ContosoSite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Grade
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Student()
+        public Grade()
         {
             this.Enrollment = new HashSet<Enrollment>();
         }
     
-        public int StudentID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public Nullable<System.DateTime> EnrollmentDate { get; set; }
-        public string MiddleName { get; set; }
-    
+        public int GradeID { get; set; }
+        public Nullable<decimal> Grado { get; set; }
+        public string Descripcion { get; set; }
+
+
+        public string Descripcion_Grado
+        {
+            get { return Descripcion + "-(" + Grado + ")" ; }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Enrollment> Enrollment { get; set; }
     }
