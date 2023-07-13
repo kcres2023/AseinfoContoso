@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Student</h4>
         <hr />
@@ -56,11 +56,116 @@
         </div>
     </div>
 }
+<div class="d-none d-sm-none d-md-none d-lg-none d-xl-block" id="DetalleEnrollments">
+    @Html.Partial("~/Views/Enrollments/EnrollmentsGrid.cshtml", Model)
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+@*
+
+    <div class="row">
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="text-right mt-2 mb-1">
+                <button type="button" class="btn btn-primary btn-sm" onclick="$('.form-cargos-enrollment').toggle('slow'); //HideShowTipoCargoDescuentoModulo();" id="btnagrega_enrollment">
+                    <i class="fas fa-plus-square"></i>
+                    Add Enrollment
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-cargos-enrollment" style="display: none;">
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(model => model.enrollment.CourseID, "CourseID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  @Html.DropDownList("CourseID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.enrollment.CourseID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.enrollment.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.enrollment.StudentID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.enrollment.GradeID, "GradeID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("GradeID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.enrollment.GradeID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+*@
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add Enrollment
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.enrollment.CourseID, "CourseID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("CourseID", null, htmlAttributes: new { @class = "form-control", @id = "cdmCourseID" })
+                        @Html.ValidationMessageFor(model => model.enrollment.CourseID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.enrollment.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control", @id = "cdmStudentID" })
+                        @Html.ValidationMessageFor(model => model.enrollment.StudentID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.enrollment.GradeID, "GradeID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("GradeID", null, htmlAttributes: new { @class = "form-control", @id = "cdmGradeID" })
+                        @Html.ValidationMessageFor(model => model.enrollment.GradeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+              
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="SaveEnrollment();">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jsFramework")
 }

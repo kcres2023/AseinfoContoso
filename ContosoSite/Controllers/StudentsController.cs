@@ -70,6 +70,9 @@ namespace ContosoSite.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CourseID = new SelectList(db.Course, "CourseID", "Title");
+            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "LastName");
+            ViewBag.GradeID = new SelectList(db.Grade, "GradeID", "Descripcion_Grado");
             return View(student);
         }
 
@@ -86,6 +89,9 @@ namespace ContosoSite.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CourseID = new SelectList(db.Course, "CourseID", "Title");
+            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "LastName");
+            ViewBag.GradeID = new SelectList(db.Grade, "GradeID", "Descripcion_Grado");
             return View(student);
         }
 

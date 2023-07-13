@@ -41,6 +41,7 @@ namespace ContosoSite.Controllers
         {
             ViewBag.CourseID = new SelectList(db.Course, "CourseID", "Title");
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "LastName");
+            ViewBag.GradeID = new SelectList(db.Grade, "GradeID", "Descripcion_Grado");
             return View();
         }
 
@@ -60,6 +61,7 @@ namespace ContosoSite.Controllers
 
             ViewBag.CourseID = new SelectList(db.Course, "CourseID", "Title", enrollment.CourseID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "LastName", enrollment.StudentID);
+            ViewBag.GradeID = new SelectList(db.Grade, "GradeID", "Descripcion_Grado", enrollment.GradeID);
             return View(enrollment);
         }
 

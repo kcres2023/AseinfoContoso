@@ -25,6 +25,14 @@ namespace ContosoSite
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            #region Scripts Framework
+            bundles.Add(new ScriptBundle("~/bundles/jsFramework").Include(
+                        "~/Scripts/util.js"
+                        ));
+
+
+            #endregion
         }
     }
 }

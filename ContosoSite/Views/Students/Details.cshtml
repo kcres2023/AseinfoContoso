@@ -43,34 +43,10 @@
         </dd>
 
     </dl>
-    <table class="table">
-        <tr>
-            <th>
-                Course Title
-            </th>
-            <th>
-                Grade
-            </th>
-            <th>
-                Credits
-            </th>
-        </tr>
 
-        @foreach (var item in Model.Enrollment)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Course.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grade1.Descripcion_Grado )
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Course.Credits)
-                </td>
-            </tr>
-        }
-    </table>
+    <div class="d-none d-sm-none d-md-none d-lg-none d-xl-block">
+        @Html.Partial("~/Views/Enrollments/EnrollmentsGrid.cshtml", Model)
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
