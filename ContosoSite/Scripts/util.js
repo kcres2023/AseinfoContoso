@@ -149,7 +149,7 @@ function SaveEnrollment() {
     }
 
     $.ajax({
-        url: '/Enrollments/Create',
+        url: '/Enrollments/Save',
         type: "POST",
         dataType: "Json",
         contentType: "application/json;charset=utf-8",
@@ -157,11 +157,11 @@ function SaveEnrollment() {
         async: true,
         success: function (result) {
             $('#cdmCourseID').val(0);
-            $('#cdmCourseID').change();
+           // $('#cdmCourseID').change();
             $('#cdmStudentID').val(0);
-            $('#cdmStudentID').change();
+            //$('#cdmStudentID').change();
             $('#cdmGradeID').val(0);
-            $('#cdmGradeID').change();
+            //$('#cdmGradeID').change();
  
             //GetEnrollments();
         },

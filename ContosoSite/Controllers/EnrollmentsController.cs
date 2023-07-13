@@ -65,6 +65,22 @@ namespace ContosoSite.Controllers
             return View(enrollment);
         }
 
+        [HttpPost]
+        public JsonResult Save(Enrollment enrollment)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Enrollment.Add(enrollment);
+                db.SaveChanges();
+            }
+            var data = new
+            {
+                Code = "0",
+                Message = ""
+            };
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Enrollments/Edit/5
         public ActionResult Edit(int? id)
         {
