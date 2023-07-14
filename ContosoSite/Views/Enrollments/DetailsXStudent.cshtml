@@ -1,0 +1,42 @@
+﻿@model List<ContosoSite.Models.Enrollment>
+
+
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Course Title
+            </th>
+            <th>
+                Grade
+            </th>
+            <th>
+                Credits
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade1.Descripcion_Grado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Credits)
+                </td>
+                <td>
+                    @*  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Edit
+                        </button> |
+                        @Html.ActionLink("Details", "Details", new { id = item.EnrollmentID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EnrollmentID })
+                    *@
+                </td>
+            </tr>
+        }
+    </table>
+</div>

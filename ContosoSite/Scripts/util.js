@@ -25,7 +25,7 @@ function SaveEnrollment() {
             $('#cdmGradeID').val(0);
             //$('#cdmGradeID').change();
  
-            //GetEnrollments();
+            GetEnrollments();
         },
         error: function (err) {
             alert(err.statusText);
@@ -36,12 +36,12 @@ function SaveEnrollment() {
 function GetEnrollments() {
 
     let datos = {
-        IdCompania: $('#item_IdCompania').val(),
-        IdTipoCargoDescuento: $('#item_IdTipoCargoDescuento').val(),
+        id: $('#StudentID').val(),
+
     }
 
     $.ajax({
-        url: '/Enrollments/GetEnrollments',
+        url: '/Enrollments/DetailsXStudent',
         type: "POST",
         dataType: "html",
         contentType: "application/json;charset=utf-8",

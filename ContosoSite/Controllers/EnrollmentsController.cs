@@ -36,6 +36,23 @@ namespace ContosoSite.Controllers
             return View(enrollment);
         }
 
+        public ActionResult DetailsXStudent(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<Enrollment> enrollment = new List<Enrollment>();
+            enrollment = db.Enrollment.Where(c => c.StudentID == id).ToList();
+            if (enrollment == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(enrollment);
+        }
+
+
+
         // GET: Enrollments/Create
         public ActionResult Create()
         {

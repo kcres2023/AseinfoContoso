@@ -32,8 +32,10 @@ namespace ContosoSite.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(student);
         }
+
 
         // GET: Students/Create
         public ActionResult Create()
@@ -73,6 +75,7 @@ namespace ContosoSite.Controllers
             ViewBag.CourseID = new SelectList(db.Course, "CourseID", "Title");
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "LastName");
             ViewBag.GradeID = new SelectList(db.Grade, "GradeID", "Descripcion_Grado");
+            ViewBag.IDStudent = id;
             return View(student);
         }
 

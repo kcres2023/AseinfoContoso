@@ -57,7 +57,8 @@
     </div>
 }
 <div class="d-none d-sm-none d-md-none d-lg-none d-xl-block" id="DetalleEnrollments">
-    @Html.Partial("~/Views/Enrollments/EnrollmentsGrid.cshtml", Model)
+    @*@Html.Partial("~/Views/Enrollments/EnrollmentsGrid.cshtml", Model) *@
+    @Html.Action("DetailsXStudent", "Enrollments", new { id = ViewBag.IDStudent })
 </div>
 
 <div>
